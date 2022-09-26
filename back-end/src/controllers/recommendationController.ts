@@ -9,9 +9,9 @@ async function insert(req: Request, res: Response) {
     throw wrongSchemaError();
   }
 
-  await recommendationService.insert(req.body);
+  const recommendationInDb = await recommendationService.insert(req.body);
 
-  res.sendStatus(201);
+  res.status(201).send(recommendationInDb);
 }
 
 async function upvote(req: Request, res: Response) {
